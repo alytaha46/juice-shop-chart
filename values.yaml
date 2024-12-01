@@ -13,7 +13,7 @@ service:
 ingress:
   enabled: true
   className: nginx
-  host: "aa8a9771096a934295bd8295b30b8dd52-1392346801.eu-west-1.elb.amazonaws.com"
+  host: ""
   rewriteTarget: "/"
   path: "/"
   pathType: Prefix
