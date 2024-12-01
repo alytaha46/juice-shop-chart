@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  repository: bkimminich/juice-shop
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+ingress:
+  enabled: true
+  className: nginx
+  host: "a33e8934fbb57413181353f95acefc71-977076764.eu-west-1.elb.amazonaws.com"
+  rewriteTarget: "/"
+  path: "/"
+  pathType: Prefix

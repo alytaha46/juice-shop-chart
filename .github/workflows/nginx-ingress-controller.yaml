@@ -1,0 +1,19 @@
+name: Deploy NGINX ingress controller Helm Chart
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: self-hosted
+
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: Deploy Helm chart
+          run: |
+            aws eks update-kubeconfig --name k8s-task-cluster --region eu-west-1 
+            helm install ingress-nginx ingress-nginx/ingress-nginx \
+            --namespace ingress-nginx \
+            --create-namespace \
+            --set controller.service.type=LoadBalancer
