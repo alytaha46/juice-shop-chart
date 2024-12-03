@@ -12,7 +12,8 @@ jobs:
 
         - name: Deploy Helm chart
           run: |
-            aws eks update-kubeconfig --name k8s-task-cluster --region eu-west-1 
+            # aws eks update-kubeconfig --name k8s-task-cluster --region eu-west-1 
+            export KUBECONFIG=$HOME/.kube/config2
             helm install ingress-nginx ingress-nginx/ingress-nginx \
             --namespace ingress-nginx \
             --create-namespace \
